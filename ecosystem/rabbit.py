@@ -1,4 +1,5 @@
 class Rabbit:
 
     def __init__(self):
-        pass
+        self.is_alive = True
+        
