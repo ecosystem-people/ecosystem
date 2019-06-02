@@ -1,7 +1,9 @@
-class Badger:
+from ecosystem import animal
 
-    def __init__(self):
-        pass
+class Badger(animal.Animal):
 
-    def eat(self, prey):
-        prey.is_alive = False
+    def diet(self):
+        return ['rabbit']
+
+    def __str__(self):
+        return 'badger'
