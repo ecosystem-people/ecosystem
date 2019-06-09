@@ -1,6 +1,6 @@
-from ecosystem import animal
+from ecosystem import lifeform
 
-class Fox(animal.Animal):
+class Fox(lifeform.LifeForm):
     
     def __init__(self):
         super().__init__()

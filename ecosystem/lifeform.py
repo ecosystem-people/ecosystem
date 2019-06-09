@@ -1,4 +1,4 @@
-class Animal:
+class LifeForm:
 
     def __init__(self):
         self.is_alive = True
