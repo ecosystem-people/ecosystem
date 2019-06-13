@@ -1,9 +1,11 @@
-from ecosystem import animal
+from ecosystem import lifeform
 
-class Fox(animal.Animal):
+class Fox(lifeform.LifeForm):
     
-    def diet(self):
-        return ['badger', 'rabbit']
+    def __init__(self):
+        super().__init__()
+        self.diet.append('rabbit')
+        self.diet.append('badger')
 
     def __str__(self):
         return 'fox'

@@ -1,4 +1,4 @@
 To run unit tests:
 ```
-python -m unittest <directory_name>
+python -m unittest discover <test_directory_name>
 ```
