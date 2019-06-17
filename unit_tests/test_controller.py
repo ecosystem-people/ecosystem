@@ -1,11 +1,16 @@
 import unittest
-from ecosystem import controller, grass, rabbit, badger, fox 
+from ecosystem import controller, grass, rabbit, badger, fox, lifeform
 
 class ControllerTest(unittest.TestCase):
 
     def setUp(self):
+        self.fluffy = rabbit.Rabbit()
+        self.bodger = badger.Badger()
+        self.foxy = fox.Fox()
+        self.lifeform = lifeform.LifeForm()
+        self.grass = grass.Grass()
         self.controller = controller.Controller()
-        self.controller.ecosystem = [rabbit.Rabbit(), fox.Fox(), fox.Fox(), badger.Badger(), grass.Grass()]
+        self.controller.ecosystem = [self.fluffy, self.foxy, fox.Fox(), self.bodger, self.grass]
 
     def test_ecosystem_exists(self):
         self.assertTrue(isinstance(self.controller.ecosystem, list))
@@ -26,3 +31,22 @@ class ControllerTest(unittest.TestCase):
         report = self.controller.report()
         self.assertTrue('Day' in report)
         self.assertTrue('Rabbits: 1' in report)
+
+    def test_cycle_removes_starved_rabbit(self):
+        fluffy = rabbit.Rabbit()
+        self.controller.ecosystem.append(fluffy)
+        fluffy.hp = 0
+        self.controller.cycle()
+        self.assertFalse(fluffy in self.controller.ecosystem)
+
+    def test_rabbit_dies_when_it_gets_eaten(self):
+        self.assertEqual(self.lifeform.hp, 100)
+        self.bodger.eat(self.fluffy)
+        self.controller.cycle()
+        self.assertFalse(self.fluffy in self.controller.ecosystem)
+
+    def test_lifeforms_automatically_eat_when_prey_available(self):
+        rex = rabbit.Rabbit()
+        self.controller.ecosystem = [rex, grass.Grass()]
+        self.controller.cycle()
+        self.assertEqual(self.controller.ecosystem, [rex])

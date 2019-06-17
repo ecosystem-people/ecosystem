@@ -6,6 +6,13 @@ class Controller():
 
     def cycle(self):
         self.day += 1
+        for predator in self.ecosystem:
+            for prey in self.ecosystem:
+                predator.eat(prey)
+        for lifeform in self.ecosystem:
+            if lifeform.hp <= 0 or not lifeform.is_alive:
+                self.ecosystem.remove(lifeform)
+            
 
     def headcount(self):
         headcount = {}
