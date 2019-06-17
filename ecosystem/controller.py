@@ -14,7 +14,7 @@ class Controller():
         return headcount
 
     def report(self):
-        report = 'Report:'
+        report = 'Day %s' % self.day
         for key in self.headcount():
             report += '\n%ss: %s' % (key.capitalize(), self.headcount()[key])
         return report

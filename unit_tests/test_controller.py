@@ -24,6 +24,5 @@ class ControllerTest(unittest.TestCase):
 
     def test_report(self):
         report = self.controller.report()
-        self.assertTrue('Report:' in report)
-        print(report)
+        self.assertTrue('Day' in report)
         self.assertTrue('Rabbits: 1' in report)

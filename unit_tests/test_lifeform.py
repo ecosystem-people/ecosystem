@@ -59,5 +59,13 @@ class LifeFormTests(unittest.TestCase):
             lifeform.eat(lifeform)
             self.assertTrue(lifeform.is_alive)
 
+    def test_rabbit_gains_health_from_eating_within_maximum(self):
+        self.assertEqual(self.lifeform.hp, 100)
+        self.fluffy.eat(self.grass)
+        self.assertEqual(self.fluffy.hp, 100)
+        self.fluffy.hp = 50
+        self.fluffy.eat(self.grass)
+        self.assertEqual(self.fluffy.hp, 55)
+
 if __name__ == '__main__':
     unittest.main()
