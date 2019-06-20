@@ -50,3 +50,9 @@ class ControllerTest(unittest.TestCase):
         self.controller.ecosystem = [rex, grass.Grass()]
         self.controller.cycle()
         self.assertEqual(self.controller.ecosystem, [rex])
+
+    def test_predator_will_not_eat_when_it_has_been_eaten(self):
+        self.controller.ecosystem = [self.bodger, self.fluffy]
+        self.foxy.eat(self.bodger)
+        self.controller.cycle()
+        self.assertTrue(self.fluffy.is_alive)
