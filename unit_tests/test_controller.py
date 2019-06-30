@@ -59,8 +59,6 @@ class ControllerTest(unittest.TestCase):
 
     def test_if_lifeform_hp_is_zero_then_lifeform_dies(self):
         self.controller.ecosystem = [self.fluffy]
-        print(self.fluffy.hp)
         self.fluffy.hp = 0
         self.controller.cycle()
-        print(self.fluffy.hp)
         self.assertFalse(self.fluffy in self.controller.ecosystem)
