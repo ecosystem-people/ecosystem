@@ -12,7 +12,7 @@ class Controller():
                     predator.eat(prey)
         self.updated_ecosystem = []
         for lifeform in self.ecosystem:
-            if lifeform.hp >= 0 and lifeform.is_alive:
+            if lifeform.hp > 0 and lifeform.is_alive:
                 self.updated_ecosystem.append(lifeform)
         self.ecosystem = self.updated_ecosystem
             
